@@ -1,7 +1,9 @@
-fetch('pessoas.json')
-  .then(resposta => resposta.json())
-  .then(json=> carregaElemPagina(json))
-  .catch(e => console.error(e))
+// fetch('pessoas.json')
+//   .then(resposta => resposta.json())
+//   .then(json=> carregaElemPagina(json))
+//   .catch(e => console.error(e))
+
+axios('pessoas.json').then(resposta => carregaElemPagina(resposta.data));
 
 function carregaElemPagina(json){
   const table = document.createElement('table');
@@ -13,7 +15,7 @@ function carregaElemPagina(json){
     tr.appendChild(td);
 
     td = document.createElement('td');
-    td.innerHTML = pessoa.idade;
+    td.innerHTML = pessoa.email;
     tr.appendChild(td);
     
     td = document.createElement('td');
